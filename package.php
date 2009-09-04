@@ -44,7 +44,7 @@ $releaseVersion = '0.1.0';
 $releaseStability = 'beta';
 $apiVersion = '0.1.0';
 $apiStability = 'beta';
-$notes = 'The initial release of Stagehand_PHP_Lexer.';
+$notes = 'The first release of Stagehand_PHP_Lexer.';
  
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
@@ -62,8 +62,8 @@ $package->setOptions(array('filelistgenerator' => 'file',
  
 $package->setPackage('Stagehand_PHP_Lexer');
 $package->setPackageType('php');
-$package->setSummary('A class for a PHP lex.');
-$package->setDescription('A class for a PHP lex.');
+$package->setSummary('A Lexical analyzer of PHP');
+$package->setDescription('Stagehand_PHP_Lexer provides features of the lexical PHP codes and translation tokens for Stagehand_PHP_Parser.');
 $package->setChannel('pear.piece-framework.com');
 $package->setLicense('BSD License (revised)', 'http://www.opensource.org/licenses/bsd-license.php');
 $package->setAPIVersion($apiVersion);
@@ -76,6 +76,7 @@ $package->setPearinstallerDep('1.4.3');
 $package->addMaintainer('lead', 'kumatch', 'KUMAKURA Yousuke', 'kumatch@gmail.com');
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->addPackageDepWithChannel('required', 'Stagehand_PHP_Parser', 'pear.piece-framework.com', '0.1.0');
+$package->addPackageDepWithChannel('required', 'Stagehand_Autoload', 'pear.piece-framework.com', '0.3.0');
 $package->generateContents();
  
 if (array_key_exists(1, $_SERVER['argv']) && $_SERVER['argv'][1] == 'make') {
