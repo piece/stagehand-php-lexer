@@ -38,7 +38,7 @@
 // {{{ Stagehand_PHP_Lexer
 
 /**
- * A class for PHP lex.
+ * A Lexical analyzer of PHP
  *
  * @package    stagehand-php-lexer
  * @copyright  2009 KUMAKURA Yousuke <kumatch@gmail.com>
