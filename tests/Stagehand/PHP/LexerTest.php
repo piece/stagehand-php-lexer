@@ -132,6 +132,39 @@ $foo ');
                             );
     }
 
+    /**
+     * @test
+     */
+    public function splitTokensFromPhpFile()
+    {
+        $lexer = new Stagehand_PHP_Lexer();
+        $lexer->setFilename(dirname(__FILE__) . '/LexerTest/example.php');
+
+        $lexerToken = null;
+        $parserToken = $lexer->yylex($lexerToken);
+
+        $this->assertEquals($lexerToken->getValue(), '$foo');
+        $this->assertEquals($lexerToken->getPosition(), 1);
+        $this->assertEquals($parserToken, Stagehand_PHP_Parser::T_VARIABLE);
+    }
+
+    /**
+     * @test
+     */
+    public function splitTokensFromPhpContents()
+    {
+        $lexer = new Stagehand_PHP_Lexer();
+        $contents = file_get_contents(dirname(__FILE__) . '/LexerTest/example.php');
+        $lexer->setContents($contents);
+
+        $lexerToken = null;
+        $parserToken = $lexer->yylex($lexerToken);
+
+        $this->assertEquals($lexerToken->getValue(), '$foo');
+        $this->assertEquals($lexerToken->getPosition(), 1);
+        $this->assertEquals($parserToken, Stagehand_PHP_Parser::T_VARIABLE);
+    }
+
     /**#@-*/
 
     /**#@+

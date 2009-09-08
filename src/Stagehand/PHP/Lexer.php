@@ -87,10 +87,38 @@ class Stagehand_PHP_Lexer
      *
      * @param string $filename  PHP script filename.
      */
-    public function __construct($filename)
+    public function __construct($filename = null)
     {
         $this->_position = 0;
-        $this->_tokens = token_get_all(file_get_contents($filename));
+        if ($filename) {
+            $this->setFilename($filename);
+        }
+    }
+
+    // }}}
+    // {{{ setFilename()
+
+    /**
+     * Sets a PHP script filename.
+     *
+     * @param string $filename PHP script filename.
+     */
+    public function setFilename($filename)
+    {
+        $this->setContents(file_get_contents($filename));
+    }
+
+    // }}}
+    // {{{ setContents()
+
+    /**
+     * Sets a PHP script contents.
+     *
+     * @param string $contents PHP script contents.
+     */
+    public function setContents($contents)
+    {
+        $this->_tokens = token_get_all($contents);
     }
 
     // }}}
