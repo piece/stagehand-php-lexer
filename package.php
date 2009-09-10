@@ -40,11 +40,26 @@ require_once 'PEAR.php';
  
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
  
-$releaseVersion = '0.1.0';
+$releaseVersion = '0.2.0';
 $releaseStability = 'beta';
-$apiVersion = '0.1.0';
+$apiVersion = '0.2.0';
 $apiStability = 'beta';
-$notes = 'The first release of Stagehand_PHP_Lexer.';
+$notes = 'What\'s New in Stagehand_PHP_Lexer 0.2.0
+
+ New analytics source
+
+  Added support for analyzing from text content of PHP script. Stagehand_PHP_Lexer could analyze only a PHP file in previous versions.
+
+   $code = <<<PHP_CODE
+   <?php
+   $a = 10;
+   $b = 20;
+   $c = $a + $b;
+   PHP_CODE;
+
+   $lexer = new Stagehand_PHP_Lexer();
+   $lexer->setContents($code);
+';
  
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
